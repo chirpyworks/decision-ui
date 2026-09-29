@@ -26,7 +26,7 @@ For a non-interactive global install:
 npx skills add chirpyworks/decision-ui -g -a claude-code -y
 ```
 
-Do not copy these commands into release notes until the standalone repository exists and the clean-install smoke test passes.
+The standalone repository now exists. Treat the install commands as pre-1.0 until the clean-install smoke test passes.
 
 ## Installer compatibility vs project verification
 
@@ -66,7 +66,7 @@ python scripts/validate.py .
 Official Agent Skills validation:
 
 ```bash
-skills-ref validate .
+skills-ref validate /path/to/decision-ui
 ```
 
 The official validation result is authoritative for specification conformance.
