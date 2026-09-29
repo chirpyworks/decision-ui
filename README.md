@@ -185,6 +185,9 @@ examples/
 site/
 scripts/
 docs/
+  COMPATIBILITY.md
+  FORKING.md
+  RELEASING.md
 .github/
 README.md
 BENCHMARK.md
@@ -215,7 +218,7 @@ CI also performs clean installation into five supported installer targets from t
 
 ## Contributing, support and security
 
-Read `CONTRIBUTING.md` before changing the core method. Use `SUPPORT.md` for support expectations and `SECURITY.md` for sensitive reports.
+Read `CONTRIBUTING.md` before changing the core method. Use `docs/RELEASING.md` for release discipline, `SUPPORT.md` for support expectations, and `SECURITY.md` for sensitive reports.
 
 Visual preference alone is not enough reason to change the shared method. Core changes should identify a recurring failure mode, user consequence, counterexample and evaluation case.
 
