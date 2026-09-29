@@ -47,3 +47,7 @@ Before marking a client behavior-verified, record:
 - raw or reproducible evaluation evidence.
 
 Marketing copy must not outrun this table.
+
+## Behavior evidence protocol
+
+See [BEHAVIOR_VERIFICATION.md](BEHAVIOR_VERIFICATION.md) for evidence levels, paired-run requirements, and publication wording.

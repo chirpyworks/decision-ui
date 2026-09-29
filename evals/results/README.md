@@ -68,3 +68,7 @@ Use the D1–D11 criteria defined in `BENCHMARK.md`.
 Do not publish a total score without the per-criterion matrix and raw outputs.
 
 Designed examples under `examples/` are not benchmark results.
+
+## Start from the template
+
+Copy `evals/results/TEMPLATE/` into a dated client/model directory before running a paired benchmark. Do not commit placeholder values as evidence.

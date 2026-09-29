@@ -1,0 +1,16 @@
+{
+  "date": "YYYY-MM-DD",
+  "client": "client-name",
+  "client_version": "x.y.z",
+  "model": "model-name-or-N/A",
+  "model_version": "version-or-null",
+  "decision_ui_version": "0.1.0-rc.2",
+  "decision_ui_commit": "FULL_COMMIT_SHA",
+  "operating_system": "OS and version",
+  "installation_method": "exact install command or path",
+  "activation_prompt": "exact prompt used to activate or invoke the skill",
+  "skill_load_evidence": "how loading/reference use was verified",
+  "tools_and_permissions": "relevant tools/permissions available to both runs",
+  "fresh_context": true,
+  "notes": ""
+}
