@@ -6,6 +6,13 @@ The project uses semantic versioning for release candidates and stable releases.
 
 ## [Unreleased]
 
+### Planned
+- paired skill ON/OFF benchmark outputs
+- client activation/behavior smoke tests
+- stable release tag
+
+## [0.1.0-rc.3] - 2026-09-29
+
 ### Added
 - CODEOWNERS and lightweight release governance
 - guided issue entry points
@@ -14,17 +21,14 @@ The project uses semantic versioning for release candidates and stable releases.
 - live Pages entry points for the SaaS field study
 - reproducible benchmark result publication format
 - client behavior-verification issue template
+- editable social preview source and live Open Graph metadata
 
 ### Changed
 - benchmark documentation now matches the D1–D11 manifest
 - repository validation rejects benchmark/manifest criterion drift
-- README foregrounds live demo, field study and fork path
-
-### Planned
-- paired skill ON/OFF benchmark outputs
-- client activation/behavior smoke tests
-- social preview / proof gallery
-- stable release tag
+- README foregrounds live demo, field studies, install and fork paths
+- Pages and CI now verify all public field-study routes
+- visualization-integrity review corrected misleading generic chart scales
 
 ## [0.1.0-rc.2] - 2026-09-29
 
