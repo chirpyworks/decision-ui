@@ -37,14 +37,7 @@ jobs:
           cp examples/manufacturing-operations-before-after.html site/manufacturing-operations-before-after.html
           cp examples/sre-incident-before-after.html site/sre-incident-before-after.html
           cp examples/executive-revenue-before-after.html site/executive-revenue-before-after.html
-          if command -v magick >/dev/null 2>&1; then
-            magick -background none assets/social-preview.svg site/social-preview.png
-          elif command -v convert >/dev/null 2>&1; then
-            convert -background none assets/social-preview.svg site/social-preview.png
-          else
-            echo "ImageMagick is required to render social-preview.png" >&2
-            exit 1
-          fi
+          cp assets/social-preview.svg site/social-preview.svg
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site
