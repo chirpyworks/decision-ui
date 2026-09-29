@@ -30,6 +30,20 @@ Current candidate: **0.1.0-rc.3 / pre-1.0**.
 
 The public repository, format validation and installation paths are verified. Client-level activation and behavior are still being evaluated; see `docs/COMPATIBILITY.md`.
 
+## Try without installing
+
+Generate the Decision UI prompt without keeping a local install:
+
+```bash
+npx skills use chirpyworks/decision-ui --skill decision-ui
+```
+
+Or start a supported agent with the generated skill context:
+
+```bash
+npx skills use chirpyworks/decision-ui --skill decision-ui --agent claude-code
+```
+
 ## Install
 
 ```bash
