@@ -1,0 +1,34 @@
+name: Behavior bug
+description: Report a repeatable Decision UI skill failure
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Prompt
+      description: Provide the smallest prompt that reproduces the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected decision behavior
+    validations:
+      required: true
+  - type: input
+    id: agent
+    attributes:
+      label: Agent / model environment
+      placeholder: Claude Code, Codex, Cursor, Copilot, etc.
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Do not include secrets, private customer data, or proprietary prompts.
