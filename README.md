@@ -6,6 +6,8 @@ Decision UI is an open Agent Skill for data-heavy product design. It teaches cod
 
 **[Live demo](https://chirpyworks.github.io/decision-ui/)** · **[Before / after field study](https://chirpyworks.github.io/decision-ui/saas-retention-before-after.html)** · **[Forking guide](docs/FORKING.md)**
 
+![Decision UI social preview](assets/social-preview.png)
+
 ```
 Attention → Comparison → Cause → Impact → Action → Verification
 ```
