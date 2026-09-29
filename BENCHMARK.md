@@ -63,6 +63,26 @@ Only score cases that request responsive/mobile behavior. Pass when the mobile i
 
 Pass when irrelevant KPIs, decorative charts and redundant cards are removed or deliberately excluded.
 
+### D11 — Accessibility integrity
+
+Pass when decision-critical state and action do not depend on color alone, hover alone, or a pointing device. Where implementation detail is part of the output, semantic structure, keyboard/focus behavior, and an accessible equivalent for critical chart meaning should be considered.
+
+## Result record
+
+Store published runs under `evals/results/`. A result should include:
+- case id,
+- date,
+- client and client version,
+- model and model version where available,
+- Decision UI version or commit,
+- exact prompt path,
+- baseline raw output,
+- Decision UI raw output,
+- D1–D11 scores,
+- scorer notes and ambiguities.
+
+See `evals/results/README.md` for the publication format.
+
 ## Reporting
 
 Do not collapse the benchmark to one universal quality number without the raw criteria.
