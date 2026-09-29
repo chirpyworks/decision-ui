@@ -44,6 +44,13 @@ skills/decision-ui/house-style.md
 
 The core requires no API key, telemetry, runtime service or network request after installation.
 
+## Before / after field study
+
+Open the [SaaS retention comparison](examples/saas-retention-before-after.html) locally in a browser. Both views use the exact facts from the [benchmark prompt](evals/prompts/saas-retention.md); only the information architecture changes.
+
+This is a designed demonstration, not a measured agent benchmark or evidence of faster decisions. It does not invent account-level causes, renewal timing or intervention outcomes.
+
+
 ## Why this exists
 
 Generated dashboards often look complete while leaving the reasoning to the user:
