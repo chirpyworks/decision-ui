@@ -1,5 +1,7 @@
 # Example — Executive Revenue / Forecast
 
+Interactive visual comparison: [before / after](executive-revenue-before-after.html). This is a designed illustration using only the supplied facts, not a measured agent benchmark.
+
 ## Brief
 
 A quarterly executive view has:
