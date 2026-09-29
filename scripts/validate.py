@@ -275,8 +275,12 @@ if site_path.exists():
         fail("site is missing description metadata")
     if re.search(r"<script[^>]+src=[\"']https?://", html, re.I):
         fail("site must not require an external script")
-    if re.search(r"<link[^>]+href=[\"']https?://", html, re.I):
-        fail("site must not require an external stylesheet")
+    link_tags = re.findall(r"<link\\b[^>]*>", html, re.I)
+    for tag in link_tags:
+        if re.search(r"\\brel=[\"'][^\"']*\\bstylesheet\\b[^\"']*[\"']", tag, re.I) and re.search(
+            r"\\bhref=[\"']https?://", tag, re.I
+        ):
+            fail("site must not require an external stylesheet")
     if 'aria-pressed=' not in html:
         fail("demo framing controls must expose pressed state")
     if "does not establish causality" not in html:
