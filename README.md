@@ -48,6 +48,12 @@ Or fork the repository and customize `house-style.md` for your team.
 
 The core skill is intentionally model-agnostic Markdown. No API key. No runtime service. No telemetry.
 
+## Before / after field study
+
+Open the [SaaS retention comparison](examples/saas-retention-before-after.html) locally in a browser. It uses the exact facts in the [benchmark prompt](evals/prompts/saas-retention.md) for both views. The example isolates information hierarchy; it is a designed demonstration, not a measured agent benchmark or evidence of faster decisions.
+
+The metric-first view presents the same cohort and retention data as an overview. The decision-first view foregrounds the 15.3-point mid-market cohort gap, the $38–52k exposure range, the next investigation and a proposed verification plan. Neither view invents account-level causes or outcomes.
+
 ## Use it for
 
 - SaaS and product analytics
