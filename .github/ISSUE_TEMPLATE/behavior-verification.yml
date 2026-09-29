@@ -7,13 +7,16 @@ body:
     attributes:
       value: |
         Thank you for testing Decision UI in a real client. Installer success alone is not behavior verification.
+        Please avoid private, customer, credential, or proprietary data.
+
   - type: input
     id: client
     attributes:
-      label: Client and version
+      label: Client and exact version
       placeholder: "Codex x.y.z"
     validations:
       required: true
+
   - type: input
     id: model
     attributes:
@@ -21,29 +24,82 @@ body:
       placeholder: "Model name and version, or N/A"
     validations:
       required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "macOS 15.x / Ubuntu 24.04 / Windows 11"
+    validations:
+      required: true
+
   - type: input
     id: skill
     attributes:
-      label: Decision UI version or commit
-      placeholder: "0.1.0-rc.2 / commit SHA"
+      label: Decision UI version or full commit
+      placeholder: "0.1.0-rc.2 / full commit SHA"
     validations:
       required: true
+
+  - type: textarea
+    id: install
+    attributes:
+      label: Installation method
+      description: Provide the exact command or installation path.
+      placeholder: "npx skills@1.7.0 add chirpyworks/decision-ui --skill decision-ui -a codex -y"
+    validations:
+      required: true
+
   - type: textarea
     id: activation
     attributes:
-      label: Activation evidence
-      description: Describe the prompt and how you verified the skill/references loaded.
+      label: Activation prompt and load evidence
+      description: Include the exact activation prompt and how you verified the skill/references loaded.
     validations:
       required: true
+
+  - type: dropdown
+    id: evidence_level
+    attributes:
+      label: Evidence level
+      description: See docs/BEHAVIOR_VERIFICATION.md.
+      options:
+        - "A — activation evidence"
+        - "B — single-run behavior evidence"
+        - "C — paired benchmark evidence"
+    validations:
+      required: true
+
   - type: textarea
     id: result
     attributes:
-      label: Observed behavior
-      description: Include reproducible output or a link to raw benchmark artifacts. Do not include private data.
+      label: Raw or reproducible output
+      description: Paste raw output or link to a reproducible artifact/branch. Screenshots alone are weaker evidence.
     validations:
       required: true
+
+  - type: textarea
+    id: baseline
+    attributes:
+      label: Baseline evidence (required for Level C)
+      description: For paired evidence, provide the unassisted/baseline output using the same prompt, client, model, tools and permissions.
+
   - type: textarea
     id: limitations
     attributes:
       label: Limitations / ambiguities
-      description: Note anything that prevents a strong compatibility claim.
+      description: Note anything that prevents a stronger compatibility claim.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: integrity
+    attributes:
+      label: Evidence integrity
+      options:
+        - label: I did not include private/customer data, credentials, or proprietary prompts.
+          required: true
+        - label: I did not manually edit raw outputs before evaluation.
+          required: true
+        - label: If this is paired evidence, both runs used the same prompt/environment with fresh context.
+          required: false
