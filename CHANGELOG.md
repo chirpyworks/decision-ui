@@ -7,6 +7,8 @@ The project uses semantic versioning for release candidates and stable releases.
 ## [Unreleased]
 
 ### Added
+- three additional domain field studies for manufacturing, SRE, and executive revenue
+- four-domain proof gallery on the live Pages site
 - live Pages entry points for the SaaS field study
 - reproducible benchmark result publication format
 - client behavior-verification issue template
