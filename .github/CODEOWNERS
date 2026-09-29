@@ -1,0 +1,8 @@
+# Decision UI ownership
+* @chirpyworks
+
+# Changes to the portable method and evaluation contract always require owner review.
+/skills/decision-ui/ @chirpyworks
+/evals/ @chirpyworks
+/scripts/validate.py @chirpyworks
+/.github/workflows/ @chirpyworks
