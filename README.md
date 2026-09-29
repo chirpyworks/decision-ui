@@ -8,6 +8,14 @@ Decision UI is an open Agent Skill for data-heavy product design. It teaches cod
 
 ![Decision UI social preview](assets/social-preview.svg)
 
+## Fork it for your team
+
+Decision UI is designed to be forked without turning upstream updates into a merge-conflict project.
+
+Keep the shared method in `skills/decision-ui/SKILL.md` and `references/`. Put your team's typography, density, component library, chart stack, domain vocabulary, thresholds and review gates in `skills/decision-ui/house-style.md`.
+
+**[Forking guide](docs/FORKING.md)** explains the low-conflict boundary.
+
 ```
 Attention → Comparison → Cause → Impact → Action → Verification
 ```
