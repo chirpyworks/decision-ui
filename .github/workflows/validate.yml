@@ -117,3 +117,8 @@ jobs:
           curl --fail --silent --show-error http://127.0.0.1:4173/manufacturing-operations-before-after.html >/dev/null
           curl --fail --silent --show-error http://127.0.0.1:4173/sre-incident-before-after.html >/dev/null
           curl --fail --silent --show-error http://127.0.0.1:4173/executive-revenue-before-after.html >/dev/null
+      - name: Check canonical social preview
+        run: |
+          test -s assets/social-preview.svg
+          grep -q "Stop building" assets/social-preview.svg
+          grep -q "decision-ui" assets/social-preview.svg

@@ -56,7 +56,7 @@ What is still unverified or intentionally out of scope.
 ## Tagging
 
 Tag format:
-- prerelease: `v0.1.0-rc.2`
+- prerelease: `v0.1.0-rc.N`
 - stable: `v1.0.0`
 
 Create the GitHub release from the exact validated main commit. Do not tag an unmerged feature branch.

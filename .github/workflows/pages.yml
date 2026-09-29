@@ -9,7 +9,7 @@ on:
       - "examples/executive-revenue-before-after.html"
       - "examples/sre-incident-before-after.html"
       - "examples/manufacturing-operations-before-after.html"
-      - "assets/social-preview.png"
+      - "assets/social-preview.svg"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -37,7 +37,7 @@ jobs:
           cp examples/manufacturing-operations-before-after.html site/manufacturing-operations-before-after.html
           cp examples/sre-incident-before-after.html site/sre-incident-before-after.html
           cp examples/executive-revenue-before-after.html site/executive-revenue-before-after.html
-          cp assets/social-preview.png site/social-preview.png
+          cp assets/social-preview.svg site/social-preview.svg
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site

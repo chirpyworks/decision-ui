@@ -38,5 +38,5 @@
   ],
   "scoring": "binary-per-criterion",
   "notes": "Publish raw prompts and outputs. Do not treat a small benchmark as proof of universal causal superiority.",
-  "skill_version": "0.1.0-rc.2"
+  "skill_version": "0.1.0-rc.3"
 }

@@ -33,7 +33,7 @@ Record at minimum:
   "client_version": "x.y.z",
   "model": "model-name",
   "model_version": "version-or-null",
-  "decision_ui_version": "0.1.0-rc.2",
+  "decision_ui_version": "0.1.0-rc.3",
   "decision_ui_commit": "<sha>",
   "environment": "OS / relevant tool context",
   "notes": ""

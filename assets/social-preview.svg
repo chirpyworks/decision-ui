@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
   <rect width="1280" height="640" fill="#0b0d0f"/>
   <line x1="790" y1="64" x2="790" y2="576" stroke="#242a31" stroke-width="1"/>
-  <text x="72" y="82" fill="#d8ff4f" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" letter-spacing="3">OPEN AGENT SKILL · 0.1.0-RC.2</text>
+  <text x="72" y="82" fill="#d8ff4f" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" letter-spacing="3">OPEN AGENT SKILL</text>
   <text x="72" y="208" fill="#f5f7f9" font-family="Arial, Helvetica, sans-serif" font-size="80" font-weight="700" letter-spacing="-4">Stop building</text>
   <text x="72" y="292" fill="#f5f7f9" font-family="Arial, Helvetica, sans-serif" font-size="80" font-weight="700" letter-spacing="-4">dashboards.</text>
   <text x="72" y="358" fill="#bdc5ce" font-family="Arial, Helvetica, sans-serif" font-size="28">Build decision interfaces.</text>
