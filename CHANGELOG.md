@@ -6,6 +6,11 @@ The project uses semantic versioning for release candidates and stable releases.
 
 ## [Unreleased]
 
+### Added
+- behavior verification evidence levels (A/B/C)
+- reproducible behavior evidence templates
+- hardened client behavior verification issue intake
+
 ### Planned
 - paired skill ON/OFF benchmark outputs
 - client activation/behavior smoke tests
