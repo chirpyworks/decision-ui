@@ -2,27 +2,32 @@
 
 All notable Decision UI changes are documented here.
 
-The project follows semantic versioning once v1.0.0 is released.
+The project uses semantic versioning for release candidates and stable releases.
 
 ## [Unreleased]
 
+### Planned
+- paired skill ON/OFF benchmark outputs
+- client activation/behavior smoke tests
+- social preview / proof gallery
+- stable release tag
+
+## [0.1.0-rc.2] - 2026-09-29
+
 ### Added
-- installation and support documentation
+- standalone public repository verification
+- five-target skills CLI install matrix for Claude Code, Codex, Cursor, Gemini CLI and GitHub Copilot
 - accessibility reference and evaluation criterion
 - reproducible benchmark prompt fixtures
-- pinned official Agent Skills validation in CI
+- support policy
 - GitHub Actions dependency updates
-- community conduct policy
-- accessible semantics for the demo toggle
 
-### Planned
-- standalone public repository
-- GitHub Pages demo
-- cross-agent behavioral smoke tests
-- public benchmark outputs
-- social preview asset
+### Changed
+- causal claims are separated from diagnostic evidence
+- SaaS demo/example now use only supplied synthetic facts
+- CI uses current GitHub Actions majors and pinned validation dependencies
 
-## [0.1.0] - 2026-09-29
+## [0.1.0-rc.1] - 2026-09-29
 
 ### Added
 - core Decision UI skill

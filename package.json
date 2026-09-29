@@ -1,0 +1,29 @@
+{
+  "name": "decision-ui",
+  "version": "0.1.0-rc.2",
+  "description": "Decision-first UI skill for data-heavy products and AI coding agents.",
+  "keywords": [
+    "agent-skills",
+    "dashboard",
+    "data-visualization",
+    "product-design",
+    "ui-ux",
+    "analytics",
+    "decision-support"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "skills",
+    "README.md",
+    "LICENSE"
+  ],
+  "skill": {
+    "entry": "skills/decision-ui/SKILL.md",
+    "references": "skills/decision-ui/references"
+  },
+  "scripts": {
+    "validate": "python3 scripts/validate.py .",
+    "serve": "python3 -m http.server --directory site 4173"
+  }
+}

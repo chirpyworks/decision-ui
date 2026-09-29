@@ -49,7 +49,7 @@ Support progressive diagnosis:
 - owner,
 - input.
 
-Prefer causal navigation over a generic “view details” dead end.
+Prefer diagnostic navigation over a generic “view details” dead end.
 
 Do not turn sequence or correlation into causal certainty. Distinguish:
 - observed association,
@@ -57,7 +57,7 @@ Do not turn sequence or correlation into causal certainty. Distinguish:
 - working hypothesis,
 - validated cause.
 
-When the evidence is incomplete, the interface should help compare explanations rather than manufacture one.
+When evidence is incomplete, help the user compare explanations rather than manufacture one.
 
 ## Impact
 

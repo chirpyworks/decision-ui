@@ -1,4 +1,4 @@
-name: Validate
+name: validate
 
 on:
   push:
@@ -15,8 +15,8 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
-      - name: Run repository validator
-        run: python scripts/validate.py .
+      - name: Run Decision UI repository validator
+        run: python3 scripts/validate.py .
 
   agent-skills-spec:
     runs-on: ubuntu-latest
@@ -25,18 +25,45 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
-      - name: Checkout pinned Agent Skills reference implementation
-        uses: actions/checkout@v7
-        with:
-          repository: agentskills/agentskills
-          ref: 69ef37e9424c0a7ea9dd2293b559e43ec8176379
-          path: _agent-skills
-      - name: Validate against official reference validator
+      - name: Validate Agent Skills conformance
         run: |
-          python -m pip install -e ./_agent-skills/skills-ref
-          skills-ref validate "$GITHUB_WORKSPACE"
+          python3 -m venv /tmp/decision-ui-skills-ref
+          /tmp/decision-ui-skills-ref/bin/pip install --quiet \
+            "skills-ref @ git+https://github.com/agentskills/agentskills.git@69ef37e9424c0a7ea9dd2293b559e43ec8176379#subdirectory=skills-ref"
+          /tmp/decision-ui-skills-ref/bin/skills-ref validate skills/decision-ui
 
-  installer-smoke:
+  installer-candidate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - agent: claude-code
+            expected: .claude/skills/decision-ui/SKILL.md
+          - agent: codex
+            expected: .agents/skills/decision-ui/SKILL.md
+          - agent: cursor
+            expected: .agents/skills/decision-ui/SKILL.md
+          - agent: gemini-cli
+            expected: .agents/skills/decision-ui/SKILL.md
+          - agent: github-copilot
+            expected: .agents/skills/decision-ui/SKILL.md
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22.20.0"
+      - name: Install checked-out candidate
+        shell: bash
+        run: |
+          work="$RUNNER_TEMP/decision-ui-candidate-${{ matrix.agent }}"
+          mkdir -p "$work"
+          cd "$work"
+          npx --yes skills@1.7.0 add "$GITHUB_WORKSPACE" --skill decision-ui -a "${{ matrix.agent }}" -y
+          test -s "${{ matrix.expected }}"
+
+  installer-public:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -56,10 +83,10 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: "22.20.0"
-      - name: Install Decision UI from public repository
+      - name: Install from public default branch
         shell: bash
         run: |
-          work="$RUNNER_TEMP/decision-ui-${{ matrix.agent }}"
+          work="$RUNNER_TEMP/decision-ui-public-${{ matrix.agent }}"
           mkdir -p "$work"
           cd "$work"
           npx --yes skills@1.7.0 add chirpyworks/decision-ui --skill decision-ui -a "${{ matrix.agent }}" -y
@@ -69,11 +96,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - name: Check demo entrypoint
-        run: test -s site/index.html
-      - name: Check for conflict markers
+      - name: Check for merge-conflict markers
         run: |
           if grep -R -n -E '^(<<<<<<<|=======|>>>>>>>)' --exclude-dir=.git .; then
             echo "Merge conflict marker found"
             exit 1
           fi
+      - name: Smoke-test static demo
+        run: |
+          python3 -m http.server --directory site 4173 >/tmp/decision-ui-http.log 2>&1 &
+          pid=$!
+          trap 'kill $pid' EXIT
+          sleep 1
+          curl --fail --silent --show-error http://127.0.0.1:4173/ >/dev/null

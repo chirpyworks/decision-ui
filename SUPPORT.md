@@ -1,31 +1,31 @@
 # Support
 
-Decision UI is an open-source methodology and agent skill. Support is community-based.
+Decision UI is an open-source methodology and Agent Skill. Support is community-based.
 
-## Use an issue when
+## Open an issue when
 
 - a prompt reliably produces behavior that contradicts the skill,
-- an install or validation step is broken,
+- installation or validation is broken,
 - a reference contains an analytical error,
 - an example teaches a misleading comparison,
-- an agent compatibility regression can be reproduced.
+- a client compatibility regression is reproducible.
 
 Include:
 - the smallest reproducible prompt,
-- agent and model environment,
+- client and model environment,
 - Decision UI version or commit,
 - observed result,
 - expected decision behavior.
 
-Do not include secrets, customer data, proprietary prompts, or internal company information.
+Do not include secrets, customer data, proprietary prompts or internal company information.
 
-## Use a rule proposal when
+## Propose a rule when
 
-You have a reusable failure mode that should change the core method or references. A proposal should include a test prompt, not only a preference.
+You have a reusable failure mode that should change the shared method or references. Include a test prompt, not only a preference.
 
 ## Security
 
-Do not use a public issue for a security-sensitive report. Follow `SECURITY.md`.
+Do not use a public issue for security-sensitive reports. Follow `SECURITY.md`.
 
 ## What is not guaranteed
 
@@ -34,6 +34,6 @@ Decision UI cannot guarantee:
 - domain expertise the agent was not given,
 - causal conclusions unsupported by evidence,
 - accessibility compliance without implementation review,
-- identical behavior across models and agent versions.
+- identical behavior across models and client versions.
 
-The skill is intended to improve decision architecture, not replace product, domain, engineering, analytics, or accessibility review.
+The skill improves decision architecture; it does not replace product, domain, engineering, analytics or accessibility review.
