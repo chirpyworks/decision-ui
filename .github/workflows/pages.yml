@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "site/**"
+      - "examples/saas-retention-before-after.html"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -26,6 +27,8 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: actions/configure-pages@v6
+      - name: Stage field study
+        run: cp examples/saas-retention-before-after.html site/saas-retention-before-after.html
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site
