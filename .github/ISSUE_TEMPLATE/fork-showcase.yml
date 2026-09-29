@@ -1,0 +1,70 @@
+name: Fork showcase
+description: Submit a meaningful public adaptation of Decision UI for the community showcase
+title: "[showcase] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Showcase entries are discoverability links, not endorsements or quality certifications.
+        Do not include private/customer data, secrets, proprietary material, or unsupported performance claims.
+
+  - type: input
+    id: fork
+    attributes:
+      label: Public fork URL
+      placeholder: "https://github.com/owner/decision-ui"
+    validations:
+      required: true
+
+  - type: textarea
+    id: changed
+    attributes:
+      label: What did you change?
+      description: Describe the house style, domain pack, evals, implementation stack, or other meaningful adaptation.
+    validations:
+      required: true
+
+  - type: textarea
+    id: whyfork
+    attributes:
+      label: Why did this need a fork?
+      description: Explain why a normal install was not sufficient.
+    validations:
+      required: true
+
+  - type: textarea
+    id: upstream
+    attributes:
+      label: Upstream boundary
+      description: Which core upstream files did you keep unchanged, and where do your local rules live?
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence / evaluation
+      description: Link any local evals, examples or behavior evidence. "None yet" is acceptable when stated clearly.
+    validations:
+      required: true
+
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Limitations
+      description: State known gaps, unsupported clients, domain assumptions, or other boundaries.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: integrity
+    attributes:
+      label: Integrity
+      options:
+        - label: This is a public fork with meaningful changes beyond branding.
+          required: true
+        - label: The fork contains no private/customer data, credentials, or proprietary material.
+          required: true
+        - label: I am not presenting this listing as Decision UI endorsement or certification.
+          required: true

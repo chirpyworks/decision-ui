@@ -55,3 +55,9 @@ If a local rule proves broadly useful, open a rule proposal with:
 - user consequence,
 - counterexample,
 - evaluation case.
+
+## Practical recipes
+
+See [FORK_RECIPES.md](FORK_RECIPES.md) for product analytics, operations, and finance/risk customization examples.
+
+If your fork is public and meaningfully adapts the method, submit it through the **Fork showcase** issue template for possible listing in the community showcase.

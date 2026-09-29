@@ -84,3 +84,11 @@ python3 scripts/validate.py .
 ## Conduct
 
 Be specific, evidence-oriented, and respectful. Critique the contribution, not the contributor.
+
+## Community forks
+
+If your adaptation is organization-specific, keep it in a fork rather than pushing local preferences into the shared core.
+
+Use [docs/FORK_RECIPES.md](docs/FORK_RECIPES.md) for practical examples. Meaningful public adaptations can be submitted through the **Fork showcase** issue template and may be listed in [SHOWCASE.md](SHOWCASE.md).
+
+A showcase listing is not an endorsement or quality certification.
