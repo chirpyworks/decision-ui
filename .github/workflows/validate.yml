@@ -62,6 +62,22 @@ jobs:
           npx --yes skills@1.7.0 add "$GITHUB_WORKSPACE" --skill decision-ui -a "${{ matrix.agent }}" -y
           test -s "${{ matrix.expected }}"
 
+  skills-use-candidate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22.20.0"
+      - name: Generate Decision UI prompt without installing
+        shell: bash
+        run: |
+          output="$RUNNER_TEMP/decision-ui-use.txt"
+          npx --yes skills@1.7.0 use "$GITHUB_WORKSPACE" --skill decision-ui > "$output"
+          test -s "$output"
+          grep -q "Decision UI" "$output"
+          grep -q "Build interfaces that reduce decision effort" "$output"
+
   installer-public:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
