@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "skill": "decision-ui",
+  "criteria": [
+    "decision_contract",
+    "priority",
+    "comparison",
+    "diagnostic_path",
+    "action_path",
+    "verification",
+    "visualization_fit",
+    "state_integrity",
+    "responsive_reconstruction",
+    "restraint",
+    "accessibility_integrity"
+  ],
+  "core_cases": [
+    {
+      "id": "saas-retention",
+      "example": "examples/saas-retention.md",
+      "prompt": "evals/prompts/saas-retention.md"
+    },
+    {
+      "id": "manufacturing-operations",
+      "example": "examples/manufacturing-operations.md",
+      "prompt": "evals/prompts/manufacturing-operations.md"
+    },
+    {
+      "id": "sre-incident",
+      "example": "examples/sre-incident.md",
+      "prompt": "evals/prompts/sre-incident.md"
+    },
+    {
+      "id": "executive-revenue",
+      "example": "examples/executive-revenue.md",
+      "prompt": "evals/prompts/executive-revenue.md"
+    }
+  ],
+  "scoring": "binary-per-criterion",
+  "notes": "Publish raw prompts and outputs. Do not treat a small benchmark as proof of universal causal superiority."
+}
