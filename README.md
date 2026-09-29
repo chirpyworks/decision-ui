@@ -16,7 +16,7 @@ Here, **Cause is a diagnostic question, not permission to claim causality**. The
 
 ## Status
 
-Current candidate: **0.1.0-rc.2 / pre-1.0**.
+Current candidate: **0.1.0-rc.3 / pre-1.0**.
 
 The public repository, format validation and installation paths are verified. Client-level activation and behavior are still being evaluated; see `docs/COMPATIBILITY.md`.
 
