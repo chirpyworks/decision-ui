@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Live Decision UI demo
+    url: https://chirpyworks.github.io/decision-ui/
+    about: Review the public demo and four-domain field studies before proposing a visual change.
+  - name: Security reports
+    url: https://github.com/chirpyworks/decision-ui/security
+    about: Do not disclose sensitive vulnerabilities in a public issue.
