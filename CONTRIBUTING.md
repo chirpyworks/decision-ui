@@ -66,7 +66,7 @@ The core skill has no runtime dependency.
 For structural validation, use the official Agent Skills reference validator when available:
 
 ```bash
-skills-ref validate .
+skills-ref validate /path/to/decision-ui
 ```
 
 The repository also includes a lightweight local validator:
