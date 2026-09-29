@@ -6,6 +6,9 @@ on:
     paths:
       - "site/**"
       - "examples/saas-retention-before-after.html"
+      - "examples/executive-revenue-before-after.html"
+      - "examples/sre-incident-before-after.html"
+      - "examples/manufacturing-operations-before-after.html"
       - "assets/social-preview.png"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
@@ -31,6 +34,9 @@ jobs:
       - name: Stage public assets
         run: |
           cp examples/saas-retention-before-after.html site/saas-retention-before-after.html
+          cp examples/manufacturing-operations-before-after.html site/manufacturing-operations-before-after.html
+          cp examples/sre-incident-before-after.html site/sre-incident-before-after.html
+          cp examples/executive-revenue-before-after.html site/executive-revenue-before-after.html
           cp assets/social-preview.png site/social-preview.png
       - uses: actions/upload-pages-artifact@v5
         with:
