@@ -1,0 +1,49 @@
+name: Client behavior verification
+description: Submit reproducible evidence that Decision UI activates and changes behavior in a supported client
+title: "[behavior] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for testing Decision UI in a real client. Installer success alone is not behavior verification.
+  - type: input
+    id: client
+    attributes:
+      label: Client and version
+      placeholder: "Codex x.y.z"
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model / version
+      placeholder: "Model name and version, or N/A"
+    validations:
+      required: true
+  - type: input
+    id: skill
+    attributes:
+      label: Decision UI version or commit
+      placeholder: "0.1.0-rc.2 / commit SHA"
+    validations:
+      required: true
+  - type: textarea
+    id: activation
+    attributes:
+      label: Activation evidence
+      description: Describe the prompt and how you verified the skill/references loaded.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Observed behavior
+      description: Include reproducible output or a link to raw benchmark artifacts. Do not include private data.
+    validations:
+      required: true
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Limitations / ambiguities
+      description: Note anything that prevents a strong compatibility claim.
