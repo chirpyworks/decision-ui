@@ -1,24 +1,29 @@
 # Roadmap
 
-## v0.2 — Standards and proof
+## Completed foundations
 
-- official Agent Skills structural validation
-- local zero-dependency validator
-- install smoke tests
-- SaaS, manufacturing, SRE, executive examples
-- accessibility review rules
-- contribution and security policies
-- public benchmark format
+- [x] official Agent Skills structural validation
+- [x] local zero-dependency validator
+- [x] five-target installer smoke tests
+- [x] SaaS, manufacturing, SRE, executive field studies
+- [x] accessibility review rules
+- [x] contribution, support and security policies
+- [x] machine-readable eval manifest
+- [x] repeatable skill-on / skill-off comparison protocol
+- [x] raw output publication rules
+- [x] D1–D11 evaluation rubric
+- [x] behavior-verification evidence intake
+- [x] live GitHub Pages proof gallery
 
-## v0.3 — Evaluation
+## Current priority — behavioral evidence
 
-- machine-readable eval manifest
-- repeatable skill-on / skill-off comparison protocol
-- raw output publication rules
-- rubric for decision contract, hierarchy, comparison, action and state integrity
-- regression set for common dashboard anti-patterns
+- [ ] Level A activation evidence for each supported client
+- [ ] Level B single-run behavior evidence for each supported client
+- [ ] Level C paired benchmark evidence for at least one client
+- [ ] publish raw paired outputs under `evals/results/`
+- [ ] document counterexamples and regressions discovered by real runs
 
-## v0.4 — Domain packs
+## Domain packs
 
 Potential optional references:
 - SaaS revenue and retention
@@ -28,15 +33,12 @@ Potential optional references:
 
 Domain packs must not contaminate the portable core method.
 
-## v1.0 — Stable public contract
+## Stable v1.0 contract
 
 v1.0 requires:
-- standalone repository
-- spec validation passing
-- install smoke tests passing on supported agent targets
-- no P0/P1 QA issues
-- four reviewed examples
-- benchmark protocol published
+- no unresolved P0/P1 QA issues
+- client-level behavior evidence published
+- benchmark claims limited to recorded evidence
 - accessibility and responsive review complete
-- documentation and contribution path complete
-- release notes and versioned tag
+- repository discovery metadata complete
+- release notes and versioned stable tag
