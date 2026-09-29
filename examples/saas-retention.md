@@ -1,5 +1,7 @@
 # Example — SaaS Retention
 
+Interactive visual comparison: [before / after](saas-retention-before-after.html). This is a designed illustration using the supplied facts, not a raw agent-with/without-skill benchmark result.
+
 ## Brief
 
 A B2B SaaS product team needs a weekly retention view. Data:
