@@ -1,0 +1,38 @@
+name: Rule proposal
+description: Propose a reusable decision-architecture rule
+title: "[rule] "
+labels: ["proposal"]
+body:
+  - type: textarea
+    id: failure
+    attributes:
+      label: Failure mode
+      description: What common agent-generated UI failure does this prevent?
+    validations:
+      required: true
+  - type: textarea
+    id: decision
+    attributes:
+      label: Decision impact
+      description: What user decision becomes easier or safer?
+    validations:
+      required: true
+  - type: textarea
+    id: eval
+    attributes:
+      label: Evaluation prompt
+      description: Give a prompt that should fail before the rule and pass after it.
+    validations:
+      required: true
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Best home
+      options:
+        - Core SKILL.md
+        - Reference
+        - House style
+        - Domain pack
+        - Unsure
+    validations:
+      required: true
