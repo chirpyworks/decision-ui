@@ -36,6 +36,12 @@ Good evals expose a meaningful failure boundary. Prefer prompts where a generic 
 
 Team-specific preferences belong in `skills/decision-ui/house-style.md` or examples, not in the core method.
 
+### Client behavior verification
+
+Installer compatibility and behavior verification are tracked separately. If you test Decision UI in Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, or another Agent Skills client, use the behavior-verification issue template and include reproducible evidence.
+
+Paired benchmark contributions should preserve the raw baseline and Decision UI outputs under `evals/results/` using the format in `evals/results/README.md`.
+
 ## Pull request checklist
 
 - [ ] I can state the decision problem this change improves.

@@ -4,6 +4,10 @@
 
 Decision UI is an open Agent Skill for data-heavy product design. It teaches coding agents to organize interfaces around the decision a person must make instead of defaulting to equal-weight KPI cards and decorative chart collections.
 
+**[Live demo](https://chirpyworks.github.io/decision-ui/)** · **[Before / after field study](https://chirpyworks.github.io/decision-ui/saas-retention-before-after.html)** · **[Forking guide](docs/FORKING.md)**
+
+![Decision UI social preview](assets/social-preview.png)
+
 ```
 Attention → Comparison → Cause → Impact → Action → Verification
 ```
@@ -46,7 +50,7 @@ The core requires no API key, telemetry, runtime service or network request afte
 
 ## Before / after field study
 
-Open the [SaaS retention comparison](examples/saas-retention-before-after.html) locally in a browser. Both views use the exact facts from the [benchmark prompt](evals/prompts/saas-retention.md); only the information architecture changes.
+Open the [live SaaS retention comparison](https://chirpyworks.github.io/decision-ui/saas-retention-before-after.html) or inspect its [source](examples/saas-retention-before-after.html). Both views use the exact facts from the [benchmark prompt](evals/prompts/saas-retention.md); only the information architecture changes.
 
 This is a designed demonstration, not a measured agent benchmark or evidence of faster decisions. It does not invent account-level causes, renewal timing or intervention outcomes.
 
@@ -159,6 +163,8 @@ Put organization-specific preferences in:
 ```
 skills/decision-ui/house-style.md
 ```
+
+That narrow customization surface is deliberate: fork for your team, keep the method upstream-compatible, and pull improvements with fewer conflicts.
 
 See `docs/FORKING.md` for the low-conflict fork model.
 

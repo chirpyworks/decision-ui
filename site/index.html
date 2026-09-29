@@ -7,13 +7,17 @@
 <meta property="og:title" content="Decision UI — Stop building dashboards">
 <meta property="og:description" content="Decision-first interface architecture for AI coding agents.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://chirpyworks.github.io/decision-ui/">
+<meta property="og:image" content="https://chirpyworks.github.io/decision-ui/social-preview.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
 <title>Decision UI — Stop building dashboards</title>
 <style>
 :root{--bg:#0b0d0f;--panel:#11151a;--line:#242a31;--text:#f5f7f9;--muted:#8d98a5;--accent:#d8ff4f;--warn:#ffbe5c;--danger:#ff6f72;--ok:#7ee2b8;--max:1180px}
 *{box-sizing:border-box}html{background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}body{margin:0}
 button{font:inherit}.shell{max-width:var(--max);margin:auto;padding:44px 28px 80px}
 nav{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:18px}.brand{font-weight:750;letter-spacing:-.03em}.tag{color:var(--muted);font-size:13px}
-.hero{display:grid;grid-template-columns:1.55fr .45fr;gap:32px;padding:88px 0 64px}.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}.hero h1{font-size:clamp(52px,8vw,104px);line-height:.92;letter-spacing:-.065em;margin:14px 0 22px;max-width:900px}.hero p{max-width:660px;color:#bdc5ce;font-size:19px;line-height:1.55;margin:0}.flow{align-self:end;color:var(--muted);font-size:13px;line-height:1.8;border-left:1px solid var(--line);padding-left:20px}.flow b{color:var(--text)}
+.hero{display:grid;grid-template-columns:1.55fr .45fr;gap:32px;padding:88px 0 64px}.hero-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:26px}.hero-links a{color:var(--text);font-size:13px;text-decoration:none;border-bottom:1px solid #45505b;padding-bottom:4px}.hero-links a:first-child{color:var(--accent);border-color:#65752a}.hero-links a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}.hero h1{font-size:clamp(52px,8vw,104px);line-height:.92;letter-spacing:-.065em;margin:14px 0 22px;max-width:900px}.hero p{max-width:660px;color:#bdc5ce;font-size:19px;line-height:1.55;margin:0}.flow{align-self:end;color:var(--muted);font-size:13px;line-height:1.8;border-left:1px solid var(--line);padding-left:20px}.flow b{color:var(--text)}
 .controls{display:flex;gap:8px;margin:30px 0 18px}.controls button{border:1px solid var(--line);background:transparent;color:var(--muted);padding:10px 14px;border-radius:999px;cursor:pointer}.controls button.active{background:var(--text);color:#0b0d0f;border-color:var(--text)}.controls button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .demo{border-top:1px solid var(--line);padding-top:28px}.section-title{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:18px}.section-title h2{font-size:28px;letter-spacing:-.03em;margin:0}.section-title p{margin:0;color:var(--muted);max-width:570px;font-size:14px;line-height:1.45}
 .grid{display:grid;gap:12px}.cards{grid-template-columns:repeat(3,1fr)}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}.card small{color:var(--muted)}.metric{font-size:34px;letter-spacing:-.04em;margin-top:20px}.delta{font-size:12px;color:var(--ok);margin-top:4px}.delta.negative{color:var(--danger)}
@@ -30,7 +34,7 @@ footer{margin-top:72px;border-top:1px solid var(--line);padding-top:24px;color:v
 <div class="shell">
 <nav><div class="brand">Decision UI</div><div class="tag">agent skill · 0.1.0-rc.2</div></nav>
 <section class="hero">
-<div><div class="eyebrow">Decision architecture for AI-built products</div><h1>Stop building dashboards.</h1><p>Teach your coding agent to organize data around attention, comparison, diagnosis, impact and action — not a wall of equally loud KPI cards.</p></div>
+<div><div class="eyebrow">Decision architecture for AI-built products</div><h1>Stop building dashboards.</h1><p>Teach your coding agent to organize data around attention, comparison, diagnosis, impact and action — not a wall of equally loud KPI cards.</p><div class="hero-links"><a href="saas-retention-before-after.html">Open field study →</a><a href="https://github.com/chirpyworks/decision-ui">View source ↗</a></div></div>
 <div class="flow"><b>ATTENTION</b><br>↓<br><b>COMPARISON</b><br>↓<br><b>DIAGNOSE</b><br>↓<br><b>IMPACT</b><br>↓<br><b>ACTION</b><br>↓<br><b>VERIFY</b></div>
 </section>
 <section class="demo">

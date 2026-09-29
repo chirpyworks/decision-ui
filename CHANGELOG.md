@@ -6,6 +6,16 @@ The project uses semantic versioning for release candidates and stable releases.
 
 ## [Unreleased]
 
+### Added
+- live Pages entry points for the SaaS field study
+- reproducible benchmark result publication format
+- client behavior-verification issue template
+
+### Changed
+- benchmark documentation now matches the D1–D11 manifest
+- repository validation rejects benchmark/manifest criterion drift
+- README foregrounds live demo, field study and fork path
+
 ### Planned
 - paired skill ON/OFF benchmark outputs
 - client activation/behavior smoke tests
