@@ -71,6 +71,7 @@ REQUIRED = [
     ROOT / "evals" / "prompts" / "manufacturing-operations.md",
     ROOT / "evals" / "prompts" / "sre-incident.md",
     ROOT / "evals" / "prompts" / "executive-revenue.md",
+    ROOT / "evals" / "results" / "README.md",
     ROOT / "site" / "index.html",
 ]
 
@@ -193,6 +194,31 @@ if manifest_path.exists():
                 fail(f"eval prompt does not exist: {prompt}")
     except Exception as exc:
         fail(f"invalid eval manifest: {exc}")
+
+benchmark_path = ROOT / "BENCHMARK.md"
+if benchmark_path.exists():
+    benchmark = benchmark_path.read_text(encoding="utf-8")
+    benchmark_criteria = {
+        "D1 — Decision contract",
+        "D2 — Priority",
+        "D3 — Comparison",
+        "D4 — Diagnostic path",
+        "D5 — Action path",
+        "D6 — Verification",
+        "D7 — Visualization fit",
+        "D8 — State integrity",
+        "D9 — Responsive reconstruction",
+        "D10 — Restraint",
+        "D11 — Accessibility integrity",
+    }
+    missing_benchmark_criteria = sorted(
+        item for item in benchmark_criteria if item not in benchmark
+    )
+    if missing_benchmark_criteria:
+        fail(
+            "benchmark criteria drift: "
+            + ", ".join(missing_benchmark_criteria)
+        )
 
 if skill_version and (ROOT / "CHANGELOG.md").exists():
     changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
