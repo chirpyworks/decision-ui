@@ -2,9 +2,6 @@ name: render-social-preview
 
 on:
   push:
-    branches:
-      - main
-      - assets/social-preview-png
     paths:
       - "assets/social-preview.svg"
       - "assets/instagram-launch.svg"
