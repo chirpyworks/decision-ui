@@ -102,10 +102,18 @@ jobs:
             echo "Merge conflict marker found"
             exit 1
           fi
-      - name: Smoke-test static demo
+      - name: Smoke-test public Pages routes
         run: |
+          cp examples/saas-retention-before-after.html site/saas-retention-before-after.html
+          cp examples/manufacturing-operations-before-after.html site/manufacturing-operations-before-after.html
+          cp examples/sre-incident-before-after.html site/sre-incident-before-after.html
+          cp examples/executive-revenue-before-after.html site/executive-revenue-before-after.html
           python3 -m http.server --directory site 4173 >/tmp/decision-ui-http.log 2>&1 &
           pid=$!
           trap 'kill $pid' EXIT
           sleep 1
           curl --fail --silent --show-error http://127.0.0.1:4173/ >/dev/null
+          curl --fail --silent --show-error http://127.0.0.1:4173/saas-retention-before-after.html >/dev/null
+          curl --fail --silent --show-error http://127.0.0.1:4173/manufacturing-operations-before-after.html >/dev/null
+          curl --fail --silent --show-error http://127.0.0.1:4173/sre-incident-before-after.html >/dev/null
+          curl --fail --silent --show-error http://127.0.0.1:4173/executive-revenue-before-after.html >/dev/null

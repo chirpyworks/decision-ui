@@ -72,6 +72,10 @@ REQUIRED = [
     ROOT / "evals" / "prompts" / "sre-incident.md",
     ROOT / "evals" / "prompts" / "executive-revenue.md",
     ROOT / "evals" / "results" / "README.md",
+    ROOT / "examples" / "saas-retention-before-after.html",
+    ROOT / "examples" / "manufacturing-operations-before-after.html",
+    ROOT / "examples" / "sre-incident-before-after.html",
+    ROOT / "examples" / "executive-revenue-before-after.html",
     ROOT / "site" / "index.html",
 ]
 

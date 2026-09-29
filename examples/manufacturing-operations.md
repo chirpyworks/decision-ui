@@ -1,5 +1,7 @@
 # Example — Manufacturing Operations
 
+Interactive visual comparison: [before / after](manufacturing-operations-before-after.html). This is a designed illustration using only the supplied facts, not a measured agent benchmark.
+
 ## Brief
 
 A plant manager sees:

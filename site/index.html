@@ -24,10 +24,10 @@ nav{display:flex;justify-content:space-between;align-items:center;border-bottom:
 .chartbox{height:180px;margin-top:12px;background:linear-gradient(180deg,#151a20,#0f1317);border:1px solid var(--line);border-radius:14px;padding:18px}.bars{display:flex;align-items:end;height:110px;gap:10px}.bars i{display:block;flex:1;background:#4c5662;border-radius:4px 4px 0 0}
 .decision{display:grid;grid-template-columns:1.6fr .8fr;gap:14px}.primary{background:var(--panel);border:1px solid #3d461d;padding:24px;border-radius:14px}.primary .risk{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.11em;font-weight:700}.primary h3{font-size:36px;line-height:1.05;letter-spacing:-.045em;margin:12px 0 8px}.primary p{color:var(--muted);margin:0 0 24px;line-height:1.5}.row{display:grid;grid-template-columns:1.3fr .7fr .7fr;gap:10px;padding:13px 0;border-top:1px solid var(--line);font-size:13px}.row span:nth-child(n+2){text-align:right}.row .bad{color:var(--danger)}
 .action{background:var(--accent);color:#10130a;border:0;padding:12px 16px;border-radius:10px;font-weight:750;margin-top:18px}.side{display:grid;gap:12px}.side .card{min-height:0}.label{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700}.big{font-size:24px;letter-spacing:-.03em;margin:12px 0 4px}.muted{color:var(--muted);font-size:13px;line-height:1.45}
-.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:72px}.principle{background:var(--bg);padding:26px;min-height:180px}.principle b{display:block;font-size:22px;letter-spacing:-.03em;margin-bottom:12px}.principle span{color:var(--muted);font-size:14px;line-height:1.55}
+.proof{margin-top:72px;border-top:1px solid var(--line)}.proof-head{padding:24px 0 16px;display:flex;justify-content:space-between;gap:24px;align-items:end}.proof-head h2{font-size:28px;letter-spacing:-.03em;margin:0}.proof-head p{margin:0;color:var(--muted);font-size:13px;max-width:560px}.proof-row{display:grid;grid-template-columns:1.2fr 1fr auto;gap:20px;align-items:center;padding:18px 0;border-top:1px solid var(--line);text-decoration:none}.proof-row b{font-size:18px;letter-spacing:-.02em}.proof-row span{color:var(--muted);font-size:13px}.proof-row em{color:var(--accent);font-style:normal;font-size:13px}.proof-row:focus-visible{outline:2px solid var(--accent);outline-offset:4px}.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:72px}.principle{background:var(--bg);padding:26px;min-height:180px}.principle b{display:block;font-size:22px;letter-spacing:-.03em;margin-bottom:12px}.principle span{color:var(--muted);font-size:14px;line-height:1.55}
 footer{margin-top:72px;border-top:1px solid var(--line);padding-top:24px;color:var(--muted);display:flex;justify-content:space-between;font-size:13px}
 .hidden{display:none!important}
-@media(max-width:760px){.shell{padding:26px 18px 50px}.hero{grid-template-columns:1fr;padding:62px 0 44px}.flow{display:none}.cards,.principles{grid-template-columns:1fr}.decision{grid-template-columns:1fr}.row{grid-template-columns:1fr auto}.row span:nth-child(3){display:none}.section-title{align-items:flex-start;flex-direction:column}.hero h1{font-size:58px}}
+@media(max-width:760px){.shell{padding:26px 18px 50px}.hero{grid-template-columns:1fr;padding:62px 0 44px}.flow{display:none}.cards,.principles{grid-template-columns:1fr}.proof-head{align-items:flex-start;flex-direction:column}.proof-row{grid-template-columns:1fr auto}.proof-row span{grid-column:1/-1}.decision{grid-template-columns:1fr}.row{grid-template-columns:1fr auto}.row span:nth-child(3){display:none}.section-title{align-items:flex-start;flex-direction:column}.hero h1{font-size:58px}}
 </style>
 </head>
 <body>
@@ -70,6 +70,13 @@ footer{margin-top:72px;border-top:1px solid var(--line);padding-top:24px;color:v
 </div>
 </div>
 </div>
+</section>
+<section class="proof">
+<div class="proof-head"><h2>Proof across domains.</h2><p>Same supplied facts. Different information architecture. Each study keeps designed demonstrations separate from measured benchmarks.</p></div>
+<a class="proof-row" href="saas-retention-before-after.html"><b>SaaS retention</b><span>Cohort gap → intervention priority</span><em>Open →</em></a>
+<a class="proof-row" href="manufacturing-operations-before-after.html"><b>Manufacturing operations</b><span>Loss contribution → current-shift action</span><em>Open →</em></a>
+<a class="proof-row" href="sre-incident-before-after.html"><b>SRE incident response</b><span>Time + trust + blast radius → next intervention</span><em>Open →</em></a>
+<a class="proof-row" href="executive-revenue-before-after.html"><b>Executive revenue</b><span>Forecast gap + uncertainty → intervention focus</span><em>Open →</em></a>
 </section>
 <section class="principles">
 <div class="principle"><b>Decision before metric.</b><span>If a metric cannot change the current decision, it does not automatically deserve screen space.</span></div>

@@ -127,15 +127,18 @@ Critical state and action must not depend on color alone, hover alone or a point
 
 See `skills/decision-ui/references/accessibility.md`.
 
-## Worked examples
+## Proof across domains
 
-Four explicitly synthetic examples cover:
-- SaaS retention,
-- manufacturing operations,
-- SRE incident response,
-- executive revenue / forecast.
+Four explicitly synthetic field studies use the same rule: **same supplied facts, different information architecture**.
 
-They demonstrate the method. They are not customer case studies or benchmark proof.
+| Domain | Live field study | Source brief |
+| --- | --- | --- |
+| SaaS retention | [Before / after](https://chirpyworks.github.io/decision-ui/saas-retention-before-after.html) | [Example](examples/saas-retention.md) |
+| Manufacturing operations | [Before / after](https://chirpyworks.github.io/decision-ui/manufacturing-operations-before-after.html) | [Example](examples/manufacturing-operations.md) |
+| SRE incident response | [Before / after](https://chirpyworks.github.io/decision-ui/sre-incident-before-after.html) | [Example](examples/sre-incident.md) |
+| Executive revenue / forecast | [Before / after](https://chirpyworks.github.io/decision-ui/executive-revenue-before-after.html) | [Example](examples/executive-revenue.md) |
+
+These are designed demonstrations, not customer case studies or measured benchmark proof.
 
 ## Evaluation
 
