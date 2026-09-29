@@ -1,5 +1,7 @@
 # Example — SRE Incident Response
 
+Interactive visual comparison: [before / after](sre-incident-before-after.html). This is a designed illustration using only the supplied facts, not a measured agent benchmark.
+
 ## Brief
 
 An SRE team has:
