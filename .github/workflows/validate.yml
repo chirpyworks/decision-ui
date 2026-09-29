@@ -34,7 +34,7 @@ jobs:
       - name: Validate against official reference validator
         run: |
           python -m pip install -e ./_agent-skills/skills-ref
-          skills-ref validate .
+          skills-ref validate "$GITHUB_WORKSPACE"
 
   static-demo:
     runs-on: ubuntu-latest
