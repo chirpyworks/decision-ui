@@ -232,6 +232,15 @@ Read `CONTRIBUTING.md` before changing the core method. Use `docs/RELEASING.md` 
 
 Visual preference alone is not enough reason to change the shared method. Core changes should identify a recurring failure mode, user consequence, counterexample and evaluation case.
 
+### Pick a contribution path
+
+- **Test a real client** — [submit behavior evidence](https://github.com/chirpyworks/decision-ui/issues/7) using the Level A/B/C protocol.
+- **Good first issue** — [add a finance / AR collections field study](https://github.com/chirpyworks/decision-ui/issues/14).
+- **Accessibility** — [audit the live proof gallery](https://github.com/chirpyworks/decision-ui/issues/15).
+- **Research / method boundaries** — [find counterexamples where decision-first framing becomes too prescriptive](https://github.com/chirpyworks/decision-ui/issues/16).
+
+A useful contribution can improve the method by proving a boundary, not only by adding another example.
+
 ## License
 
 MIT. Fork it, adapt it, ship it.
