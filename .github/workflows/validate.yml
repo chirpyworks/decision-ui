@@ -11,8 +11,8 @@ jobs:
   local-validation:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Run repository validator
@@ -21,12 +21,12 @@ jobs:
   agent-skills-spec:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Checkout pinned Agent Skills reference implementation
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: agentskills/agentskills
           ref: 69ef37e9424c0a7ea9dd2293b559e43ec8176379
@@ -36,10 +36,39 @@ jobs:
           python -m pip install -e ./_agent-skills/skills-ref
           skills-ref validate "$GITHUB_WORKSPACE"
 
+  installer-smoke:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - agent: claude-code
+            expected: .claude/skills/decision-ui/SKILL.md
+          - agent: codex
+            expected: .agents/skills/decision-ui/SKILL.md
+          - agent: cursor
+            expected: .agents/skills/decision-ui/SKILL.md
+          - agent: gemini-cli
+            expected: .agents/skills/decision-ui/SKILL.md
+          - agent: github-copilot
+            expected: .agents/skills/decision-ui/SKILL.md
+    steps:
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22.20.0"
+      - name: Install Decision UI from public repository
+        shell: bash
+        run: |
+          work="$RUNNER_TEMP/decision-ui-${{ matrix.agent }}"
+          mkdir -p "$work"
+          cd "$work"
+          npx --yes skills@1.7.0 add chirpyworks/decision-ui --skill decision-ui -a "${{ matrix.agent }}" -y
+          test -s "${{ matrix.expected }}"
+
   static-demo:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Check demo entrypoint
         run: test -s site/index.html
       - name: Check for conflict markers
