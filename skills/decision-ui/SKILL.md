@@ -4,7 +4,7 @@ description: Design, audit, or reframe data-heavy dashboards, admin tools, opera
 license: MIT
 metadata:
   author: chirpyworks
-  version: "0.1.0-rc.2"
+  version: "0.1.0-rc.3"
 ---
 
 # Decision UI
