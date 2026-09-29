@@ -2,89 +2,84 @@
 
 **Stop building dashboards. Build decision interfaces.**
 
-Decision UI is a portable design skill for AI coding agents. It teaches Claude Code, Codex, Cursor, Copilot, Gemini CLI and compatible agents to turn data-heavy products into interfaces that help people decide what to do next.
-
-Most generated dashboards start with the same ingredients: six KPI cards, a line chart, a donut, a table, and a filter bar. The result may look complete while still making the user do the actual thinking.
-
-Decision UI changes the order.
+Decision UI is an open Agent Skill for data-heavy product design. It teaches coding agents to organize interfaces around the decision a person must make instead of defaulting to equal-weight KPI cards and decorative chart collections.
 
 ```
 Attention → Comparison → Cause → Impact → Action → Verification
 ```
 
-A metric is evidence. A dashboard is not the decision.
+Here, **Cause is a diagnostic question, not permission to claim causality**. The method distinguishes observed association, diagnostic evidence, working hypothesis and validated cause.
 
-## What changes
+## Status
 
-Without Decision UI, an agent tends to ask:
+Current candidate: **0.1.0-rc.2 / pre-1.0**.
 
-> What metrics and charts should this page contain?
-
-With Decision UI, it must ask:
-
-> Who is deciding what, within what time horizon, and what evidence changes that decision?
-
-That produces different interfaces: fewer equal-weight cards, more explicit priority, better comparisons, diagnostic drill-downs, meaningful chart selection, visible uncertainty, and actions connected to outcomes.
-
-## Project status
-
-Decision UI is currently **pre-1.0**. The public contract is still being validated across agents. Breaking changes are possible until v1.0.0.
-
-The skill follows the open Agent Skills `SKILL.md` format and is designed for progressive disclosure: the core method stays compact while detailed chart and anti-pattern guidance lives in `references/`.
+The public repository, format validation and installation paths are verified. Client-level activation and behavior are still being evaluated; see `docs/COMPATIBILITY.md`.
 
 ## Install
-
-After the standalone repository is published and the clean-install gate passes:
 
 ```bash
 npx skills add chirpyworks/decision-ui
 ```
 
-The current `skills` installer recognizes Claude Code, Codex, Cursor, Gemini CLI and GitHub Copilot targets. Decision UI's own behavioral smoke tests for those agents are tracked separately and must pass before v1.0.
+Verified non-interactive form:
 
-See [INSTALL.md](INSTALL.md) for target-specific commands and the verification matrix.
+```bash
+npx skills@1.7.0 add chirpyworks/decision-ui --skill decision-ui -a <agent> -y
+```
 
-Or fork the repository and customize `house-style.md` for your team.
+Install smoke tests pass for Claude Code, Codex, Cursor, Gemini CLI and GitHub Copilot targets. Installer success is not the same as behavior verification.
 
-The core skill is intentionally model-agnostic Markdown. No API key. No runtime service. No telemetry.
+Canonical skill:
 
-## Use it for
+```
+skills/decision-ui/SKILL.md
+```
 
-- SaaS and product analytics
-- operations and manufacturing software
-- finance and risk consoles
-- internal tools and admin products
-- BI and executive reporting
-- observability and incident interfaces
-- any UI where the user must decide, prioritize, diagnose or act
+Fork-specific rules belong in:
+
+```
+skills/decision-ui/house-style.md
+```
+
+The core requires no API key, telemetry, runtime service or network request after installation.
+
+## Why this exists
+
+Generated dashboards often look complete while leaving the reasoning to the user:
+
+- every KPI gets the same visual weight,
+- charts are selected for variety rather than analytical purpose,
+- anomalies are highlighted without a path to action,
+- exact lookup problems become charts,
+- desktop layouts are merely stacked on mobile,
+- stale or uncertain data looks as trustworthy as current data,
+- temporal association is presented as cause.
+
+Decision UI starts from the actor, decision, time horizon, consequence, evidence and available action, then selects hierarchy and visualization.
 
 ## Four operating modes
 
-### BUILD
-Create a new decision interface from a brief, dataset, schema or product requirement.
-
-### AUDIT
-Review an existing dashboard or UI. Return the highest-impact structural problems before visual polish.
-
-### REFRAME
-Keep the underlying data and business goal, but replace a metric-first information architecture with a decision-first one.
-
-### CHART
-Choose or critique a visualization from the question being answered, not from chart fashion.
+| Mode | Purpose |
+| --- | --- |
+| **BUILD** | Create a new decision interface from a brief, schema, dataset or product requirement. |
+| **AUDIT** | Find the highest-impact structural problems before visual polish. |
+| **REFRAME** | Keep the data and business goal, but replace metric-first IA with decision-first IA. |
+| **CHART** | Choose or critique a visualization from the analytical question, not chart fashion. |
 
 ## The core test
 
-Before drawing the page, complete this sentence:
+Before drawing the page, complete:
 
 > **The user opens this view because they need to decide ______ before ______.**
 
-If that sentence cannot be completed, do not design the dashboard yet.
+If that sentence cannot be completed, the interface is not ready to be designed.
 
 ## Default hierarchy
 
-1. **Attention** — what requires action now?
+1. **Attention** — what requires attention now?
 2. **Comparison** — compared with what baseline, target, cohort or prior period?
-3. **Cause** — what explains the change?
+3. **Cause / diagnosis** — what evidence explains the change, and how strong is the causal support?
 4. **Impact** — what happens if nothing changes?
 5. **Action** — what can the user do next?
 6. **Verification** — did the action improve the outcome?
@@ -113,75 +108,100 @@ Choose charts by analytical question.
 - Process state → event or state timeline
 - Exact lookup → table, not a chart
 
-See `references/chart-selection.md`.
+See `skills/decision-ui/references/chart-selection.md`.
 
-## Fork this for your team
+## Accessibility is part of decision integrity
 
-The project is designed to be forked.
+Critical state and action must not depend on color alone, hover alone or a pointing device. Important chart meaning needs an accessible textual or tabular equivalent where appropriate.
 
-Edit only `house-style.md` to add your:
-- density preference
-- typography
-- visual tone
-- chart library
-- component system
-- domain-specific thresholds
-- accessibility requirements
-- review gates
+See `skills/decision-ui/references/accessibility.md`.
 
-Keep the core methodology upstream-compatible, then pull improvements without losing your house rules.
+## Worked examples
 
-## What Decision UI is not
+Four explicitly synthetic examples cover:
+- SaaS retention,
+- manufacturing operations,
+- SRE incident response,
+- executive revenue / forecast.
 
-It is not a component library, chart library, analytics backend, design token package, or a substitute for domain knowledge.
+They demonstrate the method. They are not customer case studies or benchmark proof.
 
-It is a **decision architecture layer** for the agent building those things.
+## Evaluation
+
+The repository includes:
+- `BENCHMARK.md` — comparison protocol,
+- `evals/cases.md` — behavioral boundaries,
+- `evals/manifest.json` — machine-readable evaluation contract,
+- `evals/prompts/` — exact benchmark prompts.
+
+The benchmark rule is: same agent/model version, same prompt, same data, fresh context, baseline vs Decision UI, raw outputs preserved.
+
+Do not collapse a small evaluation set into unsupported claims of universal superiority.
+
+## Forking
+
+Keep upstream method close to:
+
+```
+skills/decision-ui/SKILL.md
+skills/decision-ui/references/
+```
+
+Put organization-specific preferences in:
+
+```
+skills/decision-ui/house-style.md
+```
+
+See `docs/FORKING.md` for the low-conflict fork model.
 
 ## Repository structure
 
 ```
-SKILL.md
-house-style.md
-references/
-  decision-flow.md
-  chart-selection.md
-  anti-patterns.md
-  accessibility.md
+skills/
+  decision-ui/
+    SKILL.md
+    house-style.md
+    references/
 evals/
-  cases.md
-  manifest.json
   prompts/
 examples/
 site/
-  index.html
 scripts/
-  validate.py
-INSTALL.md
+docs/
+.github/
+README.md
 BENCHMARK.md
+LICENSE
 CONTRIBUTING.md
 SECURITY.md
 SUPPORT.md
 CODE_OF_CONDUCT.md
-LICENSE
+CHANGELOG.md
+ROADMAP.md
 ```
 
 ## Validation
 
-Run the lightweight repository check:
+Repository policy:
 
 ```bash
-python scripts/validate.py .
+python3 scripts/validate.py .
 ```
 
-Before a stable release, the package must also pass the official `skills-ref validate` check and install smoke tests on the supported agent matrix.
+Agent Skills format:
 
-Behavior changes should be evaluated with [BENCHMARK.md](BENCHMARK.md), with raw prompts and outputs preserved.
+```bash
+skills-ref validate skills/decision-ui
+```
 
-## Contributing and security
+CI also performs clean installation into five supported installer targets from the real public repository.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) before changing the core method. Community expectations are in [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), support expectations are in [SUPPORT.md](SUPPORT.md), and security-sensitive reports should follow [SECURITY.md](SECURITY.md).
+## Contributing, support and security
 
-The project intentionally requires no credentials, telemetry, network access, or executable runtime for its core behavior.
+Read `CONTRIBUTING.md` before changing the core method. Use `SUPPORT.md` for support expectations and `SECURITY.md` for sensitive reports.
+
+Visual preference alone is not enough reason to change the shared method. Core changes should identify a recurring failure mode, user consequence, counterexample and evaluation case.
 
 ## License
 

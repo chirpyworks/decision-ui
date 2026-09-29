@@ -10,7 +10,7 @@ For a rule change, answer:
 
 1. What failure mode does this prevent?
 2. What user decision becomes easier?
-3. Is the rule broadly reusable, or should it live in `house-style.md`?
+3. Is the rule broadly reusable, or should it live in `skills/decision-ui/house-style.md`?
 4. Can the behavior be evaluated with a concrete prompt?
 5. Does the change increase context cost without enough benefit?
 
@@ -18,7 +18,7 @@ For a rule change, answer:
 
 ### Core method
 
-Changes to `SKILL.md` require:
+Changes to `skills/decision-ui/SKILL.md` require:
 - a clearly described failure mode,
 - at least one new or updated eval,
 - no dependency on a specific design system,
@@ -26,7 +26,7 @@ Changes to `SKILL.md` require:
 
 ### Reference material
 
-Changes under `references/` should remain focused and directly loadable from the core skill.
+Changes under `skills/decision-ui/references/` should remain focused and directly loadable from the core skill.
 
 ### Evaluation cases
 
@@ -34,7 +34,7 @@ Good evals expose a meaningful failure boundary. Prefer prompts where a generic 
 
 ### House-style examples
 
-Team-specific preferences belong in `house-style.md` or examples, not in the core method.
+Team-specific preferences belong in `skills/decision-ui/house-style.md` or examples, not in the core method.
 
 ## Pull request checklist
 
@@ -42,7 +42,7 @@ Team-specific preferences belong in `house-style.md` or examples, not in the cor
 - [ ] I updated or added eval coverage when behavior changed.
 - [ ] I did not add secrets, customer data, proprietary prompts, or private project material.
 - [ ] Local links resolve.
-- [ ] `SKILL.md` remains under 500 lines.
+- [ ] `skills/decision-ui/SKILL.md` remains under 500 lines.
 - [ ] Frontmatter follows the Agent Skills specification.
 - [ ] The change does not force a particular visual aesthetic when decision clarity is the real requirement.
 - [ ] Examples distinguish fact, assumption, and synthetic data.
@@ -66,13 +66,13 @@ The core skill has no runtime dependency.
 For structural validation, use the official Agent Skills reference validator when available:
 
 ```bash
-skills-ref validate /path/to/decision-ui
+skills-ref validate skills/decision-ui
 ```
 
 The repository also includes a lightweight local validator:
 
 ```bash
-python scripts/validate.py .
+python3 scripts/validate.py .
 ```
 
 ## Conduct

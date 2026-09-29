@@ -1,27 +1,19 @@
 # Code of Conduct
 
-Decision UI welcomes specific, evidence-oriented disagreement.
+Decision UI is an engineering and design project. Discussion should stay rigorous, specific and respectful.
 
-## Expected behavior
+## Expected
+- Critique decisions, evidence and implementation rather than people.
+- Explain the user or analytical consequence of a proposed rule.
+- Distinguish preference from accessibility, correctness and data-integrity concerns.
+- Welcome counterexamples; they improve the method.
+- Respect licenses, privacy and attribution.
 
-Contributors should:
-- critique ideas, rules and evidence rather than people,
-- explain reproducible failure modes when possible,
-- distinguish preference from analytical or accessibility requirements,
-- protect private, customer and proprietary information,
-- accept that a visually attractive contribution may still be rejected when it weakens decision clarity or truthfulness.
+## Not acceptable
+- harassment, threats or discriminatory abuse,
+- publishing private information,
+- deliberate spam or manipulation,
+- knowingly submitting malicious instructions, secrets or stolen material,
+- repeated bad-faith disruption after maintainers ask for it to stop.
 
-## Unacceptable behavior
-
-Do not:
-- harass, threaten or demean contributors,
-- publish private information,
-- use issues or pull requests for spam or promotion,
-- knowingly submit fabricated benchmark evidence,
-- manipulate stars, forks, issues or other project signals.
-
-## Enforcement
-
-Project maintainers may edit, hide, lock or remove contributions that violate these expectations and may restrict participation when necessary.
-
-For security-sensitive matters, follow `SECURITY.md` rather than discussing details publicly.
+Maintainers may remove contributions that violate these expectations and restrict participation when necessary.

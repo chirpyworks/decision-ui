@@ -3,20 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Decision UI is an open Agent Skill for decision-first dashboards, analytics products, and operational interfaces.">
+<meta property="og:title" content="Decision UI — Stop building dashboards">
+<meta property="og:description" content="Decision-first interface architecture for AI coding agents.">
+<meta property="og:type" content="website">
 <title>Decision UI — Stop building dashboards</title>
 <style>
 :root{--bg:#0b0d0f;--panel:#11151a;--line:#242a31;--text:#f5f7f9;--muted:#8d98a5;--accent:#d8ff4f;--warn:#ffbe5c;--danger:#ff6f72;--ok:#7ee2b8;--max:1180px}
 *{box-sizing:border-box}html{background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}body{margin:0}
-button{font:inherit}
-button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}.shell{max-width:var(--max);margin:auto;padding:44px 28px 80px}
+button{font:inherit}.shell{max-width:var(--max);margin:auto;padding:44px 28px 80px}
 nav{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:18px}.brand{font-weight:750;letter-spacing:-.03em}.tag{color:var(--muted);font-size:13px}
 .hero{display:grid;grid-template-columns:1.55fr .45fr;gap:32px;padding:88px 0 64px}.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}.hero h1{font-size:clamp(52px,8vw,104px);line-height:.92;letter-spacing:-.065em;margin:14px 0 22px;max-width:900px}.hero p{max-width:660px;color:#bdc5ce;font-size:19px;line-height:1.55;margin:0}.flow{align-self:end;color:var(--muted);font-size:13px;line-height:1.8;border-left:1px solid var(--line);padding-left:20px}.flow b{color:var(--text)}
-.controls{display:flex;gap:8px;margin:30px 0 18px}.controls button{border:1px solid var(--line);background:transparent;color:var(--muted);padding:10px 14px;border-radius:999px;cursor:pointer}.controls button.active{background:var(--text);color:#0b0d0f;border-color:var(--text)}
+.controls{display:flex;gap:8px;margin:30px 0 18px}.controls button{border:1px solid var(--line);background:transparent;color:var(--muted);padding:10px 14px;border-radius:999px;cursor:pointer}.controls button.active{background:var(--text);color:#0b0d0f;border-color:var(--text)}.controls button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .demo{border-top:1px solid var(--line);padding-top:28px}.section-title{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:18px}.section-title h2{font-size:28px;letter-spacing:-.03em;margin:0}.section-title p{margin:0;color:var(--muted);max-width:570px;font-size:14px;line-height:1.45}
 .grid{display:grid;gap:12px}.cards{grid-template-columns:repeat(3,1fr)}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}.card small{color:var(--muted)}.metric{font-size:34px;letter-spacing:-.04em;margin-top:20px}.delta{font-size:12px;color:var(--ok);margin-top:4px}.delta.negative{color:var(--danger)}
 .chartbox{height:180px;margin-top:12px;background:linear-gradient(180deg,#151a20,#0f1317);border:1px solid var(--line);border-radius:14px;padding:18px}.bars{display:flex;align-items:end;height:110px;gap:10px}.bars i{display:block;flex:1;background:#4c5662;border-radius:4px 4px 0 0}
 .decision{display:grid;grid-template-columns:1.6fr .8fr;gap:14px}.primary{background:var(--panel);border:1px solid #3d461d;padding:24px;border-radius:14px}.primary .risk{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.11em;font-weight:700}.primary h3{font-size:36px;line-height:1.05;letter-spacing:-.045em;margin:12px 0 8px}.primary p{color:var(--muted);margin:0 0 24px;line-height:1.5}.row{display:grid;grid-template-columns:1.3fr .7fr .7fr;gap:10px;padding:13px 0;border-top:1px solid var(--line);font-size:13px}.row span:nth-child(n+2){text-align:right}.row .bad{color:var(--danger)}
-.action{display:inline-block;background:var(--accent);color:#10130a;border:0;padding:12px 16px;border-radius:10px;font-weight:750;margin-top:18px}.side{display:grid;gap:12px}.side .card{min-height:0}.label{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700}.big{font-size:24px;letter-spacing:-.03em;margin:12px 0 4px}.muted{color:var(--muted);font-size:13px;line-height:1.45}
+.action{background:var(--accent);color:#10130a;border:0;padding:12px 16px;border-radius:10px;font-weight:750;margin-top:18px}.side{display:grid;gap:12px}.side .card{min-height:0}.label{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700}.big{font-size:24px;letter-spacing:-.03em;margin:12px 0 4px}.muted{color:var(--muted);font-size:13px;line-height:1.45}
 .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:72px}.principle{background:var(--bg);padding:26px;min-height:180px}.principle b{display:block;font-size:22px;letter-spacing:-.03em;margin-bottom:12px}.principle span{color:var(--muted);font-size:14px;line-height:1.55}
 footer{margin-top:72px;border-top:1px solid var(--line);padding-top:24px;color:var(--muted);display:flex;justify-content:space-between;font-size:13px}
 .hidden{display:none!important}
@@ -25,17 +28,14 @@ footer{margin-top:72px;border-top:1px solid var(--line);padding-top:24px;color:v
 </head>
 <body>
 <div class="shell">
-<nav><div class="brand">Decision UI</div><div class="tag">agent skill · v0.1</div></nav>
+<nav><div class="brand">Decision UI</div><div class="tag">agent skill · 0.1.0-rc.2</div></nav>
 <section class="hero">
-<div><div class="eyebrow">Decision architecture for AI-built products</div><h1>Stop building dashboards.</h1><p>Teach your coding agent to organize data around attention, comparison, cause, impact and action — not a wall of equally loud KPI cards.</p></div>
-<div class="flow"><b>ATTENTION</b><br>↓<br><b>COMPARISON</b><br>↓<br><b>CAUSE</b><br>↓<br><b>IMPACT</b><br>↓<br><b>ACTION</b><br>↓<br><b>VERIFY</b></div>
+<div><div class="eyebrow">Decision architecture for AI-built products</div><h1>Stop building dashboards.</h1><p>Teach your coding agent to organize data around attention, comparison, diagnosis, impact and action — not a wall of equally loud KPI cards.</p></div>
+<div class="flow"><b>ATTENTION</b><br>↓<br><b>COMPARISON</b><br>↓<br><b>DIAGNOSE</b><br>↓<br><b>IMPACT</b><br>↓<br><b>ACTION</b><br>↓<br><b>VERIFY</b></div>
 </section>
 <section class="demo">
 <div class="section-title"><h2>Same data. Different product.</h2><p>A small SaaS retention example. Toggle the framing — not the dataset.</p></div>
-<div class="controls" role="group" aria-label="Demo framing">
-<button type="button" id="genericBtn" class="active" aria-pressed="true">Generic dashboard</button>
-<button type="button" id="decisionBtn" aria-pressed="false">Decision interface</button>
-</div>
+<div class="controls" role="group" aria-label="Example framing"><button type="button" id="genericBtn" class="active" aria-pressed="true" aria-controls="generic decision">Generic dashboard</button><button type="button" id="decisionBtn" aria-pressed="false" aria-controls="generic decision">Decision interface</button></div>
 <div id="generic">
 <div class="grid cards">
 <div class="card"><small>Net retention</small><div class="metric">96.8%</div><div class="delta negative">−2.4 pts</div></div>
@@ -53,10 +53,10 @@ footer{margin-top:72px;border-top:1px solid var(--line);padding-top:24px;color:v
 <div class="risk">Retention risk · action this week</div>
 <h3>Incomplete-setup mid-market retention trails activated peers by 15.3 points.</h3>
 <p>Net retention fell 2.4 points. The supplied data shows a large cohort gap; it does not establish causality.</p>
-<div class="row"><span>Cohort</span><span>Retention</span><span>vs baseline</span></div>
-<div class="row"><span>Mid-market · incomplete setup</span><span>79.4%</span><span class="bad">−12.8 pts</span></div>
-<div class="row"><span>Mid-market · activated</span><span>94.7%</span><span>−0.9 pts</span></div>
-<div class="row"><span>Enterprise</span><span>97.9%</span><span>+0.3 pts</span></div>
+<div class="row"><span>Cohort</span><span>Retention</span><span>Context</span></div>
+<div class="row"><span>Mid-market · incomplete setup</span><span>79.4%</span><span class="bad">−15.3 pts vs activated MM</span></div>
+<div class="row"><span>Mid-market · activated</span><span>94.7%</span><span>reference</span></div>
+<div class="row"><span>Enterprise</span><span>97.9%</span><span>separate segment</span></div>
 <span class="action" role="note">Example action · Review 146 incomplete-setup accounts →</span>
 </div>
 <div class="side">

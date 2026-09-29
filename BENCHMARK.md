@@ -63,10 +63,6 @@ Only score cases that request responsive/mobile behavior. Pass when the mobile i
 
 Pass when irrelevant KPIs, decorative charts and redundant cards are removed or deliberately excluded.
 
-### D11 — Accessibility integrity
-
-Pass when decision-critical state and action do not depend on color alone, hover alone, or a pointing device; semantic structure and accessible equivalents are considered where the implementation context makes them relevant.
-
 ## Reporting
 
 Do not collapse the benchmark to one universal quality number without the raw criteria.

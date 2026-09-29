@@ -34,10 +34,10 @@ The screen reports the business but does not foreground the weekly decision.
 
 ## Deliberately removed
 
-- NPS when it does not change this decision.
-- DAU/MAU when it does not explain the retention gap.
+- duplicate summary cards that repeat the same cohort facts.
 - decorative donut charts.
 - equal-weight KPI tiles.
+- any metric not present in the supplied data.
 
 ## Visualization choice
 

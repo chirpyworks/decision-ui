@@ -4,7 +4,7 @@ description: Design, audit, or reframe data-heavy dashboards, admin tools, opera
 license: MIT
 metadata:
   author: chirpyworks
-  version: "0.1.0"
+  version: "0.1.0-rc.2"
 ---
 
 # Decision UI
@@ -44,6 +44,10 @@ Prefer this sequence:
 6. **Verification** — what happened after action?
 
 Do not force all six into a single page. Use them as a reasoning sequence.
+
+For multi-step operational or diagnostic products, load `references/decision-flow.md` before finalizing the information architecture.
+
+"Cause" is a diagnostic question, not permission to state causality. Distinguish observed association, diagnostic evidence, working hypothesis and validated cause.
 
 The primary visual mass belongs to the question with the highest decision value, not automatically to the largest number.
 
@@ -169,7 +173,7 @@ For BUILD or REFRAME, return:
 2. **Primary hierarchy**
 3. **Screen composition**
 4. **Visualization choices and why**
-5. **Interaction / causal navigation**
+5. **Interaction / diagnostic navigation**
 6. **States and exceptions**
 7. **Responsive behavior**
 8. **What was deliberately removed**

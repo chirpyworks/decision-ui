@@ -2,26 +2,20 @@
 
 Decision clarity fails when critical information or actions are inaccessible.
 
-Use this reference for implementation and audit work.
-
 ## State and priority
 
 Never encode critical state by color alone.
 
-Combine color with at least one durable cue when meaning matters:
+Combine color with a durable cue when meaning matters:
 - text,
-- icon with accessible label,
+- an icon with an accessible label,
 - ordering,
-- pattern,
-- shape,
-- border treatment,
-- explicit severity or status label.
-
-Do not assume red/green distinctions are universally perceivable or culturally sufficient.
+- pattern or shape,
+- explicit severity or status text.
 
 ## Keyboard and focus
 
-Interactive decision paths must be usable without a pointing device.
+Critical decision paths must be usable without a pointing device.
 
 Check:
 - logical tab order,
@@ -29,19 +23,19 @@ Check:
 - no keyboard traps,
 - controls reachable in the same decision order as the visual hierarchy,
 - dialogs return focus predictably,
-- tables and dense controls do not hide essential actions behind hover-only behavior.
+- essential information is not hover-only.
 
 ## Charts
 
-A chart should not be the only place where critical meaning exists.
+A chart must not be the only place where decision-critical meaning exists.
 
 For important charts:
-- provide a text summary of the main decision-relevant finding,
+- provide a concise text summary of the main finding,
 - expose units and comparison basis,
 - distinguish missing data from zero,
 - avoid color-only series identification,
 - use direct labels when they reduce legend lookup,
-- ensure annotations remain legible at zoom and high text scaling.
+- keep annotations legible at zoom and high text scaling.
 
 When exact values matter, provide an accessible table or equivalent data view.
 
@@ -50,13 +44,12 @@ When exact values matter, provide an accessible table or equivalent data view.
 Use real table semantics for tabular data.
 
 Preserve:
-- meaningful column headers,
-- row/column relationships,
-- sortable-state announcements where implemented,
-- clear selected/expanded states,
-- understandable empty and loading states.
+- meaningful headers,
+- row and column relationships,
+- clear selected or expanded states,
+- understandable loading and empty states.
 
-Do not recreate tables from visually aligned generic containers when semantic tables fit the task.
+Do not recreate a table from generic containers when a semantic table fits the task.
 
 ## Motion
 
@@ -70,17 +63,15 @@ Respect reduced-motion preferences. Avoid:
 
 ## Text and density
 
-Do not solve accessibility by making every expert interface sparse.
+Accessibility does not require making expert interfaces artificially sparse.
 
-Instead:
-- preserve readable type size,
-- maintain sufficient contrast,
-- use clear grouping,
-- allow zoom/reflow,
-- keep labels explicit,
-- separate metadata from primary decision text.
-
-Expert density and accessibility can coexist when hierarchy is strong.
+Prefer:
+- readable type,
+- sufficient contrast,
+- clear grouping,
+- zoom and reflow support,
+- explicit labels,
+- separation between metadata and primary decision text.
 
 ## Responsive and zoom behavior
 
@@ -89,9 +80,9 @@ At narrow widths or high zoom:
 - preserve critical comparison context,
 - keep actions reachable,
 - prevent horizontal clipping of meaning,
-- move dense evidence into focused views when needed.
+- move dense evidence into focused views when necessary.
 
-## Accessibility review question
+## Review question
 
 For every critical signal and action ask:
 

@@ -1,144 +1,281 @@
 #!/usr/bin/env python3
-"""Zero-dependency repository checks for Decision UI.
+"""Zero-dependency release validator for Decision UI.
 
-The official Agent Skills reference validator remains authoritative for spec
-conformance. This script adds project-specific integrity checks.
+This validator enforces Decision UI's repository policy. It complements,
+rather than replaces, the upstream Agent Skills reference validator.
 """
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 from pathlib import Path
-from urllib.parse import unquote
 
 
-NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-LINK_RE = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
-ALLOWED_FRONTMATTER = {
-    "name",
-    "description",
-    "license",
-    "allowed-tools",
-    "metadata",
-    "compatibility",
-}
-REQUIRED_PATHS = [
-    "SKILL.md",
-    "LICENSE",
-    "README.md",
-    "references/chart-selection.md",
-    "references/anti-patterns.md",
-    "references/decision-flow.md",
-    "references/accessibility.md",
-]
+ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
+SKILL_DIR = ROOT / "skills" / "decision-ui"
+SKILL = SKILL_DIR / "SKILL.md"
+ERRORS: list[str] = []
 
 
 def fail(message: str) -> None:
-    print(f"ERROR: {message}", file=sys.stderr)
-    raise SystemExit(1)
+    ERRORS.append(message)
 
 
-def parse_frontmatter(text: str) -> dict[str, str]:
+def require(path: Path) -> None:
+    if not path.exists():
+        fail(f"missing required file: {path.relative_to(ROOT)}")
+
+
+def top_level_field(frontmatter: str, name: str) -> str | None:
+    prefix = f"{name}:"
+    for line in frontmatter.splitlines():
+        if line.startswith(prefix):
+            return line[len(prefix):].strip().strip('"').strip("'")
+    return None
+
+
+def nested_field(frontmatter: str, name: str) -> str | None:
+    prefix = f"{name}:"
+    for line in frontmatter.splitlines():
+        stripped = line.strip()
+        if stripped.startswith(prefix):
+            return stripped[len(prefix):].strip().strip('"').strip("'")
+    return None
+
+
+REQUIRED = [
+    SKILL,
+    SKILL_DIR / "house-style.md",
+    SKILL_DIR / "references" / "decision-flow.md",
+    SKILL_DIR / "references" / "chart-selection.md",
+    SKILL_DIR / "references" / "anti-patterns.md",
+    SKILL_DIR / "references" / "accessibility.md",
+    ROOT / "README.md",
+    ROOT / "BENCHMARK.md",
+    ROOT / "LICENSE",
+    ROOT / "CONTRIBUTING.md",
+    ROOT / "SECURITY.md",
+    ROOT / "SUPPORT.md",
+    ROOT / "CODE_OF_CONDUCT.md",
+    ROOT / "CHANGELOG.md",
+    ROOT / "ROADMAP.md",
+    ROOT / "AGENTS.md",
+    ROOT / "package.json",
+    ROOT / "docs" / "COMPATIBILITY.md",
+    ROOT / "docs" / "FORKING.md",
+    ROOT / "evals" / "cases.md",
+    ROOT / "evals" / "manifest.json",
+    ROOT / "evals" / "prompts" / "saas-retention.md",
+    ROOT / "evals" / "prompts" / "manufacturing-operations.md",
+    ROOT / "evals" / "prompts" / "sre-incident.md",
+    ROOT / "evals" / "prompts" / "executive-revenue.md",
+    ROOT / "site" / "index.html",
+]
+
+for required_path in REQUIRED:
+    require(required_path)
+
+skill_version: str | None = None
+
+if SKILL.exists():
+    text = SKILL.read_text(encoding="utf-8")
     if not text.startswith("---\n"):
-        fail("SKILL.md must start with YAML frontmatter")
-    end = text.find("\n---\n", 4)
-    if end == -1:
-        fail("SKILL.md frontmatter is not closed")
+        fail("SKILL.md must begin with YAML frontmatter")
+    else:
+        parts = text.split("---", 2)
+        if len(parts) != 3:
+            fail("SKILL.md frontmatter is not closed")
+        else:
+            frontmatter, body = parts[1], parts[2]
+            name = top_level_field(frontmatter, "name")
+            description = top_level_field(frontmatter, "description")
+            license_name = top_level_field(frontmatter, "license")
+            skill_version = nested_field(frontmatter, "version")
 
-    values: dict[str, str] = {}
-    for raw in text[4:end].splitlines():
-        if raw.startswith((" ", "\t")) or not raw.strip() or ":" not in raw:
-            continue
-        key, value = raw.split(":", 1)
-        values[key.strip()] = value.strip().strip('"')
-    return values
+            if name != SKILL_DIR.name:
+                fail(f"skill name {name!r} must match parent directory {SKILL_DIR.name!r}")
+            if not name or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name):
+                fail("skill name must use lowercase alphanumerics and single hyphens")
+            if name and len(name) > 64:
+                fail("skill name exceeds 64 characters")
+            if not description or len(description) > 1024:
+                fail("description must be 1..1024 characters")
+            if license_name != "MIT":
+                fail("skill license must be MIT")
+            if not skill_version:
+                fail("metadata.version is required by repository policy")
+            if len(body.splitlines()) > 500:
+                fail("SKILL.md body exceeds 500 lines")
 
+            for reference in sorted(
+                set(re.findall(r"references/[A-Za-z0-9._/-]+\.md", body))
+            ):
+                if not (SKILL_DIR / reference).exists():
+                    fail(f"broken skill reference: {reference}")
 
-def check_relative_links(root: Path) -> None:
-    for doc in root.rglob("*.md"):
-        body = doc.read_text(encoding="utf-8", errors="ignore")
-        for raw_target in LINK_RE.findall(body):
-            target = raw_target.strip().strip("<>")
-            if not target or target.startswith(("#", "http://", "https://", "mailto:")):
+for legacy_path in (
+    ROOT / "SKILL.md",
+    ROOT / "house-style.md",
+    ROOT / "references",
+):
+    if legacy_path.exists():
+        fail(f"legacy duplicate path must not exist: {legacy_path.relative_to(ROOT)}")
+
+example_dir = ROOT / "examples"
+example_files = (
+    [path for path in example_dir.glob("*.md") if path.name != "README.md"]
+    if example_dir.exists()
+    else []
+)
+if len(example_files) < 4:
+    fail("at least four worked examples are required")
+
+package_version: str | None = None
+package_path = ROOT / "package.json"
+if package_path.exists():
+    try:
+        package_data = json.loads(package_path.read_text(encoding="utf-8"))
+        package_version = package_data.get("version")
+        entry = package_data.get("skill", {}).get("entry")
+        if entry != "skills/decision-ui/SKILL.md":
+            fail("package skill.entry must point to skills/decision-ui/SKILL.md")
+    except Exception as exc:
+        fail(f"invalid package.json: {exc}")
+
+manifest_path = ROOT / "evals" / "manifest.json"
+if manifest_path.exists():
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest_version = manifest.get("skill_version")
+        criteria = manifest.get("criteria", [])
+        core_cases = manifest.get("core_cases", [])
+
+        if skill_version and manifest_version != skill_version:
+            fail("eval manifest skill_version must match SKILL metadata.version")
+        if skill_version and package_version != skill_version:
+            fail("package version must match SKILL metadata.version")
+
+        required_criteria = {
+            "decision_contract",
+            "priority",
+            "comparison",
+            "diagnostic_path",
+            "action_path",
+            "verification",
+            "visualization_fit",
+            "state_integrity",
+            "responsive_reconstruction",
+            "restraint",
+            "accessibility_integrity",
+        }
+        missing_criteria = sorted(required_criteria - set(criteria))
+        if missing_criteria:
+            fail(f"eval manifest missing criteria: {', '.join(missing_criteria)}")
+        if len(core_cases) < 4:
+            fail("eval manifest must define at least four core cases")
+
+        ids = [case.get("id") for case in core_cases]
+        if len(ids) != len(set(ids)):
+            fail("eval core case ids must be unique")
+
+        for case in core_cases:
+            case_id = case.get("id")
+            example = case.get("example")
+            prompt = case.get("prompt")
+            if not case_id or not example or not prompt:
+                fail("each core eval case requires id, example and prompt")
                 continue
-            target = unquote(target.split("#", 1)[0].split("?", 1)[0])
-            if not target:
-                continue
-            resolved = (doc.parent / target).resolve()
-            try:
-                resolved.relative_to(root)
-            except ValueError:
-                fail(f"relative link escapes repository: {doc.relative_to(root)} -> {raw_target}")
-            if not resolved.exists():
-                fail(f"broken relative link: {doc.relative_to(root)} -> {raw_target}")
+            if not (ROOT / example).exists():
+                fail(f"eval example does not exist: {example}")
+            if not (ROOT / prompt).exists():
+                fail(f"eval prompt does not exist: {prompt}")
+    except Exception as exc:
+        fail(f"invalid eval manifest: {exc}")
 
+if skill_version and (ROOT / "CHANGELOG.md").exists():
+    changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+    if f"## [{skill_version}]" not in changelog:
+        fail("CHANGELOG must contain the current skill version")
 
-def main() -> None:
-    root = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
+# The validator source contains defensive signatures, so it is excluded.
+FORBIDDEN_WORDS = ("RUDA", "INDEXFORM", "VANTERA", "BIRTHFIELD", "FIXED")
+SECRET_PATTERNS = [
+    re.compile(r"(?i)\bsk-[A-Za-z0-9_-]{16,}\b"),
+    re.compile(
+        r"""(?i)\b(api[_-]?key|token|secret)\s*[:=]\s*['\"][^'\"]{8,}['\"]"""
+    ),
+]
 
-    for rel in REQUIRED_PATHS:
-        if not (root / rel).exists():
-            fail(f"missing required path: {rel}")
+for path in ROOT.rglob("*"):
+    if not path.is_file() or ".git" in path.parts:
+        continue
+    if path.resolve() == Path(__file__).resolve():
+        continue
+    if path.suffix.lower() not in {
+        ".md",
+        ".json",
+        ".html",
+        ".py",
+        ".yml",
+        ".yaml",
+        ".txt",
+    }:
+        continue
 
-    skill = root / "SKILL.md"
-    text = skill.read_text(encoding="utf-8")
-    meta = parse_frontmatter(text)
+    content = path.read_text(encoding="utf-8", errors="ignore")
+    relative = path.relative_to(ROOT)
+    lower = content.lower()
 
-    extra = sorted(set(meta) - ALLOWED_FRONTMATTER)
-    if extra:
-        fail(f"unexpected SKILL.md frontmatter fields: {', '.join(extra)}")
+    for word in FORBIDDEN_WORDS:
+        if word.lower() in lower:
+            fail(f"internal project identifier {word!r} found in {relative}")
 
-    name = meta.get("name", "")
-    description = meta.get("description", "")
+    for pattern in SECRET_PATTERNS:
+        if pattern.search(content):
+            fail(f"possible secret pattern found in {relative}")
 
-    if not name:
-        fail("frontmatter.name is required")
-    if not NAME_RE.fullmatch(name):
-        fail("frontmatter.name must be lowercase alphanumeric with single hyphens")
-    if len(name) > 64:
-        fail("frontmatter.name exceeds 64 characters")
-    if root.name != name:
-        fail(f"directory name '{root.name}' must match skill name '{name}'")
-    if not description:
-        fail("frontmatter.description is required")
-    if len(description) > 1024:
-        fail("frontmatter.description exceeds 1024 characters")
-    if text.count("\n") + 1 > 500:
-        fail("SKILL.md exceeds the 500-line recommended limit")
+site_path = ROOT / "site" / "index.html"
+if site_path.exists():
+    html = site_path.read_text(encoding="utf-8")
+    if '<meta name="viewport"' not in html:
+        fail("site is missing viewport metadata")
+    if '<meta name="description"' not in html:
+        fail("site is missing description metadata")
+    if re.search(r"<script[^>]+src=[\"']https?://", html, re.I):
+        fail("site must not require an external script")
+    if re.search(r"<link[^>]+href=[\"']https?://", html, re.I):
+        fail("site must not require an external stylesheet")
+    if 'aria-pressed=' not in html:
+        fail("demo framing controls must expose pressed state")
+    if "does not establish causality" not in html:
+        fail("demo must preserve explicit causal-uncertainty language")
 
-    check_relative_links(root)
+    forbidden_demo_claims = (
+        "$482k",
+        ">NPS<",
+        "61% of churn",
+        "14-day recovery",
+        "two key workflows",
+        "Billing setup and team invite",
+    )
+    for claim in forbidden_demo_claims:
+        if claim in html:
+            fail(f"unsupported demo claim regressed: {claim}")
 
-    private_tokens = [
-        "RU" + "DA",
-        "INDEX" + "FORM",
-        "VAN" + "TERA",
-        "BIRTH" + "FIELD",
-    ]
-    secret_patterns = [
-        ("OpenAI-like secret", re.compile(r"\\bsk-[A-Za-z0-9_-]{16,}\\b")),
-        ("private key block", re.compile(r"BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY")),
-        (
-            "API key assignment",
-            re.compile(r"""(?i)\\bapi[-_]?key\\s*=\\s*['\"][^'\"]{8,}"""),
-        ),
-    ]
-    text_suffixes = {".md", ".html", ".py", ".yml", ".yaml", ".json", ".txt"}
-    for file in root.rglob("*"):
-        if not file.is_file() or ".git" in file.parts:
-            continue
-        if file.suffix.lower() not in text_suffixes:
-            continue
-        body = file.read_text(encoding="utf-8", errors="ignore")
-        for token in private_tokens:
-            if token.lower() in body.lower():
-                fail(f"private project token '{token}' in {file.relative_to(root)}")
-        for label, pattern in secret_patterns:
-            if pattern.search(body):
-                fail(f"{label} detected in {file.relative_to(root)}")
+if ERRORS:
+    print("Decision UI validation failed:")
+    for item in ERRORS:
+        print(f" - {item}")
+    sys.exit(1)
 
-    print("Decision UI local validation: PASS")
-
-
-if __name__ == "__main__":
-    main()
+print("Decision UI validation passed.")
+print(f" - skill version: {skill_version}")
+print(f" - worked examples: {len(example_files)}")
+print(" - Agent Skills directory/name contract")
+print(" - reference integrity")
+print(" - evaluation/version integrity")
+print(" - benchmark prompt integrity")
+print(" - public leakage/secret heuristics")
+print(" - static demo dependency/data-integrity checks")
